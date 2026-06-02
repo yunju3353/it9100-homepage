@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I&amp;TECH 아이앤테크 — 정밀 금형·사출 전문기업</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@500;700;900&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* Industrial navy palette */
+    --navy-900: #07142e;     /* deep ink navy — primary dark */
+    --navy-800: #0d2045;     /* corporate navy */
+    --navy-700: #15305f;     /* mid navy */
+    --navy-50:  #f3f5f9;     /* tinted bg */
+    --paper:    #f8f6f1;     /* warm industrial paper */
+    --line:     #d9dbe2;
+    /* Accent: aged brass / industrial gold */
+    --gold:     #b07d0a;
+    --gold-2:   #d4920a;
+    --gold-soft:#e8c879;
+    /* Steel */
+    --steel:    #6b7a92;
+    --steel-2:  #99a3b6;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', 'Pretendard Variable', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-feature-settings: 'kern', 'liga';
+    color: #2a3140;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body[data-lang="en"] { font-family: 'Barlow Condensed', 'Pretendard', sans-serif; }
+  h1, h2, h3, h4 { font-family: inherit; }
+  button { font-family: inherit; }
+
+  /* Serif accent class for Korean editorial bits */
+  .serif-it { font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; }
+
+  /* hover lifts */
+  button:hover { opacity: 0.92; }
+  a { color: inherit; }
+
+  /* Hide scrollbar nicely on horizontal rails */
+  .hscroll::-webkit-scrollbar { height: 6px; }
+  .hscroll::-webkit-scrollbar-thumb { background: var(--line); }
+
+  /* Print */
+  @media print { nav, footer { display: none; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="data.js"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="home.jsx"></script>
+<script type="text/babel" src="company.jsx"></script>
+<script type="text/babel" src="business.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
