@@ -37,7 +37,7 @@ function CeoPage({ t }) {
           {/* Right: photo — natural aspect, vertically centered, no crop */}
           <div style={{ position: 'relative' }}>
             <img
-              src="assets/factory-entrance.png"
+              src="assets/factory-entrance.jpg"
               alt="아이앤테크 본사 정문 / 공장 전경"
               style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 24px 60px rgba(7,20,46,0.18)' }}
             />

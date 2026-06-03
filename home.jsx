@@ -104,7 +104,7 @@ function HomePage({ t, navigate }) {
         <div style={hmSt.aboutInner}>
           <div style={{ flex: '1 1 380px', display: 'flex' }}>
             <div style={{ ...hmSt.aboutImgFrame, width: '100%' }}>
-              <img src="assets/about-5axis.png" alt="5축 가공기 45° 가공 중" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img src="assets/about-5axis.jpg" alt="5축 가공기 45° 가공 중" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
           </div>
           <div style={{ flex: '1 1 460px' }}>
@@ -260,7 +260,7 @@ const hmSt = {
   // hero
   hero: { position: 'relative', minHeight: 'min(820px, 100vh)', height: 'min(820px, 100vh)', overflow: 'hidden', background: 'var(--navy-900)', color: '#fff' },
   // company aerial photo, faint
-  heroAerial: { position: 'absolute', inset: 0, backgroundImage: 'url(assets/hero-aerial.png)', backgroundSize: 'cover', backgroundPosition: 'center 35%', opacity: 0.38, mixBlendMode: 'luminosity' },
+  heroAerial: { position: 'absolute', inset: 0, backgroundImage: 'url(assets/hero-aerial.jpg)', backgroundSize: 'cover', backgroundPosition: 'center 35%', opacity: 0.38, mixBlendMode: 'luminosity' },
   // navy tint over the photo so text stays legible + brand color holds
   heroAerialTint: { position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(7,20,46,0.82) 0%, rgba(13,32,69,0.62) 45%, rgba(21,48,95,0.42) 100%)' },
   heroBgGrad: { position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 30% 40%, rgba(26,86,160,0.35) 0%, transparent 60%), linear-gradient(135deg, #07142e 0%, #0d2045 50%, #15305f 100%)' },

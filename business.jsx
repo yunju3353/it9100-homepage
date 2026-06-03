@@ -251,7 +251,7 @@ function ProductsPage({ t }) {
     <PageWrapper title={d.title} subtitle={d.subtitle}>
       <p style={bizSt.intro}>{d.intro}</p>
       <div style={{ border: '1px solid var(--line)', background: '#fff', padding: 16 }}>
-        <img src="assets/products-overview.png" alt="아이앤테크 자동차 부품 적용 현황" style={{ width: '100%', height: 'auto', display: 'block' }} />
+        <img src="assets/products-overview.jpg" alt="아이앤테크 자동차 부품 적용 현황" style={{ width: '100%', height: 'auto', display: 'block' }} />
       </div>
     </PageWrapper>
   );
@@ -602,8 +602,8 @@ function InjectionFacilityPage({ t }) {
         idx={2}
         accent="var(--navy-700)"
         photos={[
-          { src: 'assets/plant-a-small.png', alt: '사출 A동 · 중소형 다품종 라인 내부' },
-          { src: 'assets/plant-a-exterior.png', alt: '사출 A동 외관 (드론 촬영)' },
+          { src: 'assets/plant-a-small.jpg', alt: '사출 A동 · 중소형 다품종 라인 내부' },
+          { src: 'assets/plant-a-exterior.jpg', alt: '사출 A동 외관 (드론 촬영)' },
         ]}
         machineType="사출성형기"
       />
@@ -849,8 +849,8 @@ function QualityPage({ t }) {
       {/* SQ Mark hero block — certs on the left, info on the right */}
       <div style={qmSt.sqHero}>
         <div style={qmSt.sqLeft}>
-          <img src="assets/sq-cert-injection.png" alt="2025년 사출 부문 SQ 인증서" style={{ width: '100%', height: 'auto', display: 'block', background: '#fff', boxShadow: '0 6px 18px rgba(0,0,0,0.35)' }} />
-          <img src="assets/sq-cert-mold.png" alt="2025년 사출금형 부문 SQ 인증서" style={{ width: '100%', height: 'auto', display: 'block', background: '#fff', boxShadow: '0 6px 18px rgba(0,0,0,0.35)' }} />
+          <img src="assets/sq-cert-injection.jpg" alt="2025년 사출 부문 SQ 인증서" style={{ width: '100%', height: 'auto', display: 'block', background: '#fff', boxShadow: '0 6px 18px rgba(0,0,0,0.35)' }} />
+          <img src="assets/sq-cert-mold.jpg" alt="2025년 사출금형 부문 SQ 인증서" style={{ width: '100%', height: 'auto', display: 'block', background: '#fff', boxShadow: '0 6px 18px rgba(0,0,0,0.35)' }} />
         </div>
         <div style={qmSt.sqRight}>
           <div style={qmSt.sqKicker}>
