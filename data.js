@@ -205,7 +205,7 @@ window.T = {
     },
     clients: {
       title: '고객사 현황',
-      subtitle: 'Clients &amp; Coverage',
+      subtitle: 'Clients & Coverage',
       intro: '아이앤테크는 자동차 부품 산업을 중심으로 국내외 완성차·1차 협력사 및 다양한 산업군에 사출금형과 사출 제품을 공급해왔습니다.\n고객사별 요구사항과 제품 특성을 분석하여 맞춤형 제작 및 안정적인 품질 대응에 힘써왔으며,\n지속적인 해외 바이어 발굴과 공급 분야 확대를 통해 산업과 지역을 넓혀가고 있습니다.\n이러한 공급 경험과 대응 역량은 아이앤테크의 신뢰와 경쟁력을 보여주는 기반입니다.',
       statsTitle: '공급 이력',
       statsSub: 'Supply Track Record',
@@ -608,7 +608,7 @@ window.T = {
         { title: 'LUGGAGE SIDE TRIM MOLD', cat: 'INTERIOR', desc: 'Luggage compartment side trim injection molds' },
         { title: 'H2 LINER MOLD', cat: 'ECO', desc: 'Type 4 hydrogen storage tank liner injection molds' },
       ],
-      process: ['Order &amp; Review', 'Mold Design (2D · 3D)', 'CNC Precision Machining', 'EDM · Wire-cut Machining', 'Assembly &amp; Finishing', 'Try-Out (T/O) &amp; QC', 'Delivery &amp; Production Support'],
+      process: ['Order & Review', 'Mold Design (2D · 3D)', 'CNC Precision Machining', 'EDM · Wire-cut Machining', 'Assembly & Finishing', 'Try-Out (T/O) & QC', 'Delivery & Production Support'],
     },
     injection: {
       title: 'Injection Production',
@@ -645,8 +645,8 @@ window.T = {
       ],
     },
     clients: {
-      title: 'Clients &amp; Coverage',
-      subtitle: 'Clients &amp; Coverage',
+      title: 'Clients & Coverage',
+      subtitle: 'Clients & Coverage',
       intro: 'I&TECH supplies injection molds and injection-molded parts to OEM automakers, Tier-1 suppliers and a range of industries — at home and abroad — anchored in the automotive parts industry. We analyze each customer\u2019s requirements and product characteristics to deliver tailor-made manufacturing and stable quality response, while continuously expanding our overseas buyer base and supply categories to broaden our reach across industries and regions. This supply experience and responsiveness is the foundation of I&TECH\u2019s trust and competitiveness.',
       statsTitle: 'Supply Track Record',
       statsSub: 'Supply Track Record',
@@ -676,7 +676,7 @@ window.T = {
       globalDesc: 'Beyond Korea, we have supplied injection molds to automotive parts makers in Japan, China, and India,\nvalidating manufacturing capability that meets OEM-level quality standards.',
       timeline: [
         { year: '2020', event: 'Started mold exports to India auto parts maker' },
-        { year: '2014', event: 'Expanded mold exports to Japan &amp; China auto parts makers' },
+        { year: '2014', event: 'Expanded mold exports to Japan & China auto parts makers' },
         { year: '2013', event: 'Started mold exports to Japan auto parts maker' },
       ],
     },
