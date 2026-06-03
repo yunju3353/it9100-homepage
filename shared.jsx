@@ -243,7 +243,7 @@ function PageWrapper({ title, subtitle, children, hero, kicker }) {
   return (
     <div style={{ paddingTop: 78 }}>
       {hero || (
-        <div style={pwSt.hero}>
+        <div style={pwSt.hero} className="pw-hero">
           {/* large display kicker (English) behind */}
           <div style={pwSt.heroBgWord}>{subtitle}</div>
           <div style={pwSt.heroInner}>
@@ -255,7 +255,7 @@ function PageWrapper({ title, subtitle, children, hero, kicker }) {
           </div>
         </div>
       )}
-      <div style={pwSt.body}>{children}</div>
+      <div style={pwSt.body} className="pw-body">{children}</div>
     </div>
   );
 }

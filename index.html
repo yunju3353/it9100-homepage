@@ -106,6 +106,19 @@
     [data-desktop-menu] { display: none !important; }
     [data-hamburger] { display: flex !important; }
   }
+
+  /* Mobile layout: stack multi-column grids, tighten padding */
+  @media (max-width: 760px) {
+    main { overflow-x: hidden; }
+    .pw-hero { padding: 60px 18px 52px !important; }
+    .pw-body { padding: 44px 16px 72px !important; }
+    /* any inline 2+ column grid collapses to one column */
+    main div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    /* reduce big inner paddings on dark feature blocks */
+    .pw-body > div[style*="padding: 72px"],
+    .pw-body > div[style*="padding: 48px 56px"],
+    .pw-body > div[style*="padding: 90px"] { padding: 36px 20px !important; }
+  }
 </style>
 </head>
 <body>
