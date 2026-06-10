@@ -476,42 +476,34 @@ function InjectionFacilityPage({ t }) {
 
   // Reusable plant section: left photo(s), right NO/TYPE/SIZE table
   const PlantSection = ({ plant, idx, accent, photos, machineType }) => {
-    // expand qty into individual rows (1×3000T, 1×2500T, 2×550T → 2 rows of 550T, etc.)
-    // each row carries its full spec set; missing specs fall back to "—"
+    // expand qty into individual rows (1×3000T, 2×550T → separate rows), each Qty = 1
     const rows = plant.machines.flatMap(m =>
-      Array.from({ length: m.qty }, () => ({
-        ton: m.ton,
-        tieBar: m.tieBar || '—',
-        moldSize: m.moldSize || '—',
-        shotWeight: m.shotWeight || '—',
-      }))
+      Array.from({ length: m.qty }, () => ({ ton: m.ton }))
     );
     const cols = [
-      { key: 'no',         head: 'NO',              sub: '',              width: '8%' },
-      { key: 'ton',        head: 'CLAMPING FORCE',  sub: '형체력',         width: '20%' },
-      { key: 'tieBar',     head: 'TIE BAR',         sub: '타이바 간격',     width: '24%' },
-      { key: 'moldSize',   head: 'MAX MOLD SIZE',   sub: '최대 금형 크기',   width: '26%' },
-      { key: 'shotWeight', head: 'SHOT WEIGHT',     sub: '최대 사출량',     width: '22%' },
+      { key: 'no',  head: 'NO',             sub: '',       width: '16%' },
+      { key: 'ton', head: 'CLAMPING FORCE', sub: '형체력',  width: '54%' },
+      { key: 'qty', head: "Q'TY",           sub: '수량',    width: '30%' },
     ];
 
     return (
-      <div style={{ marginBottom: 64 }}>
+      <div style={{ marginBottom: 48 }}>
         {/* Header bar */}
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 20, paddingBottom: 14, borderBottom: '2px solid var(--navy-800)' }}>
-          <div style={{ fontSize: 42, fontWeight: 900, fontFamily: 'Barlow Condensed, sans-serif', color: accent, lineHeight: 1, letterSpacing: -1 }}>0{idx}</div>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 14, paddingBottom: 12, borderBottom: '2px solid var(--navy-800)' }}>
+          <div style={{ fontSize: 38, fontWeight: 900, fontFamily: 'Barlow Condensed, sans-serif', color: accent, lineHeight: 1, letterSpacing: -1 }}>0{idx}</div>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 10, letterSpacing: 4, color: 'var(--gold)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, marginBottom: 4 }}>{plant.tag}</div>
-            <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--navy-800)', margin: 0, letterSpacing: -0.3 }}>{plant.title}</h3>
+            <h3 style={{ fontSize: 21, fontWeight: 800, color: 'var(--navy-800)', margin: 0, letterSpacing: -0.3 }}>{plant.title}</h3>
           </div>
         </div>
 
         {/* Description */}
-        <p style={{ fontSize: 14.5, color: '#3a4555', lineHeight: 1.85, margin: '0 0 24px', maxWidth: 900, whiteSpace: 'pre-line' }}>{plant.desc}</p>
+        <p style={{ fontSize: 14, color: '#3a4555', lineHeight: 1.7, margin: '0 0 18px', maxWidth: 900, whiteSpace: 'pre-line' }}>{plant.desc}</p>
 
-        {/* Photo (left) + Table (right) */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 0.8fr) minmax(0, 1.25fr)', gap: 24, alignItems: 'stretch' }}>
-          {/* Photo(s) — stacked if multiple */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {/* Photo (left) + Table (right) — equal height: photo & table both fill the row */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: 24, alignItems: 'stretch' }}>
+          {/* Photo(s) — stacked if multiple, fill the row height */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 280 }}>
             {photos.map((p, i) => (
               <div key={i} style={{ position: 'relative', overflow: 'hidden', background: 'var(--navy-900)', flex: 1, minHeight: 0 }}>
                 <img
@@ -523,18 +515,18 @@ function InjectionFacilityPage({ t }) {
             ))}
           </div>
 
-          {/* Table */}
+          {/* Table — fills the row height to match the photo */}
           <div style={{ background: 'var(--paper)', padding: '0', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column' }}>
-            <table style={{ width: '100%', height: '100%', borderCollapse: 'collapse', fontSize: 13.5, tableLayout: 'fixed' }}>
+            <table style={{ width: '100%', height: '100%', borderCollapse: 'collapse', fontSize: 14, tableLayout: 'fixed' }}>
               <colgroup>
                 {cols.map((c, i) => <col key={i} style={{ width: c.width }} />)}
               </colgroup>
               <thead>
                 <tr style={{ background: 'var(--navy-50)' }}>
                   {cols.map((c, i) => (
-                    <th key={i} style={{ padding: '12px 12px 10px', textAlign: 'center', borderBottom: '2px solid var(--navy-800)' }}>
-                      <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: 1.5, color: 'var(--gold)', fontFamily: 'Barlow Condensed, sans-serif' }}>{c.head}</div>
-                      {c.sub && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: -0.2, color: 'var(--navy-800)', marginTop: 2 }}>{c.sub}</div>}
+                    <th key={i} style={{ padding: '9px 12px', textAlign: 'center', borderBottom: '2px solid var(--navy-800)' }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1.5, color: 'var(--gold)', fontFamily: 'Barlow Condensed, sans-serif' }}>{c.head}</div>
+                      {c.sub && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: -0.2, color: 'var(--navy-800)', marginTop: 1 }}>{c.sub}</div>}
                     </th>
                   ))}
                 </tr>
@@ -543,20 +535,18 @@ function InjectionFacilityPage({ t }) {
                 {rows.map((r, i) => {
                   const isLast = i === rows.length - 1;
                   const base = {
-                    padding: '11px 12px',
+                    padding: '6px 12px',
                     textAlign: 'center',
                     color: 'var(--navy-800)',
-                    fontSize: 13.5,
+                    fontSize: 14,
                     fontWeight: 400,
-                    borderBottom: isLast ? 'none' : '1px dashed var(--line)',
+                    borderBottom: isLast ? 'none' : '1px solid #eceae3',
                   };
                   return (
-                    <tr key={i}>
+                    <tr key={i} style={{ background: i % 2 === 1 ? '#fbfaf7' : 'transparent' }}>
                       <td style={{ ...base, color: 'var(--steel)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 }}>{i + 1}</td>
-                      <td style={{ ...base, fontWeight: 700 }}>{r.ton.toLocaleString()}T</td>
-                      <td style={base}>{r.tieBar}</td>
-                      <td style={base}>{r.moldSize}</td>
-                      <td style={base}>{r.shotWeight}</td>
+                      <td style={{ ...base, fontWeight: 800, fontSize: 15 }}>{r.ton.toLocaleString()}T</td>
+                      <td style={{ ...base, color: 'var(--gold)', fontWeight: 700 }}>1</td>
                     </tr>
                   );
                 })}
@@ -626,12 +616,55 @@ function FacilityPage({ t, dataKey }) {
             {/* group header */}
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, marginBottom: 16, paddingBottom: 10, borderBottom: '2px solid var(--navy-800)' }}>
               <div style={{ fontSize: 26, fontWeight: 900, fontFamily: 'Barlow Condensed, sans-serif', color: 'var(--gold-2)', lineHeight: 1, letterSpacing: -1 }}>{String(gi + 1).padStart(2, '0')}</div>
-              <h3 style={{ flex: 1, fontSize: 18, fontWeight: 800, color: 'var(--navy-800)', margin: 0, letterSpacing: 0.5, fontFamily: 'Barlow Condensed, sans-serif' }}>{g.en}</h3>
-              {totalQty > 0 && (
-                <div style={{ fontSize: 12, color: 'var(--steel)', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: 1, fontWeight: 600 }}>TOTAL {totalQty} UNITS</div>
-              )}
+              <h3 style={{ flex: 1, fontSize: g.simple ? 19 : 18, fontWeight: 800, color: 'var(--navy-800)', margin: 0, letterSpacing: g.simple ? -0.3 : 0.5, fontFamily: g.simple ? 'inherit' : 'Barlow Condensed, sans-serif' }}>{g.title || g.en}</h3>
+              {g.simple
+                ? <div style={{ fontSize: 11, letterSpacing: 2, color: 'var(--gold)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700 }}>{g.en}</div>
+                : (totalQty > 0 && <div style={{ fontSize: 12, color: 'var(--steel)', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: 1, fontWeight: 600 }}>TOTAL {totalQty} UNITS</div>)
+              }
             </div>
 
+            {g.simple ? (
+              /* compact 설비명 / 수량 table (left) + photos (right) */
+              <div style={{ display: 'grid', gridTemplateColumns: g.photos ? 'minmax(0, 1.15fr) minmax(0, 0.85fr)' : 'minmax(0, 600px)', gap: 24, alignItems: 'stretch' }}>
+                <table style={{ ...facSt.table, alignSelf: 'start' }}>
+                  <colgroup>
+                    <col style={{ width: '12%' }} />
+                    <col style={{ width: '60%' }} />
+                    <col style={{ width: '28%' }} />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      {['NO', '설비명', '수량'].map((h, i) => (
+                        <th key={i} style={{ ...facSt.th, textAlign: i === 1 ? 'left' : 'center', paddingLeft: i === 1 ? 20 : 14 }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {g.rows.map((r, ri) => (
+                      <tr key={ri} style={{ background: ri % 2 === 0 ? '#fff' : '#fbfaf7' }}>
+                        <td style={{ ...facSt.td, padding: '7px 14px', textAlign: 'center', color: 'var(--steel)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 }}>{ri + 1}</td>
+                        <td style={{ ...facSt.td, padding: '7px 20px', fontWeight: 600, color: 'var(--navy-800)' }}>{r.model}</td>
+                        <td style={{ ...facSt.td, padding: '7px 14px', textAlign: 'center', color: 'var(--gold)', fontWeight: 700 }}>{r.qty}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {g.photos && (
+                  <div style={{ position: 'relative', minHeight: 0 }}>
+                    <div style={{ position: 'absolute', inset: 0, display: 'grid', gridTemplateColumns: g.photos.length > 1 ? '1fr 1fr' : '1fr', gridAutoRows: '1fr', gap: 10 }}>
+                      {g.photos.map((p, i) => {
+                        const spanFull = g.photos.length % 2 === 1 && i === g.photos.length - 1;
+                        return (
+                          <div key={i} style={{ overflow: 'hidden', background: 'var(--navy-900)', minHeight: 0, gridColumn: spanFull ? '1 / -1' : 'auto' }}>
+                            <img src={p} alt={`${g.title} 설비`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
             <div style={{ overflowX: 'auto' }}>
               <table style={facSt.table}>
                 <colgroup>
@@ -661,6 +694,7 @@ function FacilityPage({ t, dataKey }) {
                 </tbody>
               </table>
             </div>
+            )}
           </div>
         );
       })}
@@ -913,7 +947,9 @@ function QualityPage({ t }) {
         <div style={qmSt.gallery}>
           {d.gallery.map((g, i) => (
             <div key={i} style={qmSt.galleryItem}>
-              <PlaceholderImg label={g.label} height={220} />
+              {g.src
+                ? <img src={g.src} alt={g.label} style={{ width: '100%', height: 220, objectFit: 'cover', display: 'block' }} />
+                : <PlaceholderImg label={g.label} height={220} />}
               <div style={qmSt.galleryCap}>
                 <div style={qmSt.galleryLabel}>{g.label}</div>
                 <div style={qmSt.galleryDesc}>{g.desc}</div>
@@ -931,21 +967,21 @@ const qmSt = {
   sqLeft: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 },
   sqRight: { padding: '4px 4px 4px 12px', display: 'flex', flexDirection: 'column', justifyContent: 'center' },
   sqKicker: { display: 'inline-flex', alignItems: 'center', gap: 12, fontSize: 11, letterSpacing: 4, color: 'var(--gold-2)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, marginBottom: 18 },
-  sqTitle: { fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 800, lineHeight: 1.2, margin: '0 0 20px', letterSpacing: -0.5 },
+  sqTitle: { fontSize: 'clamp(20px, 2.1vw, 27px)', fontWeight: 800, lineHeight: 1.25, margin: '0 0 16px', letterSpacing: -0.5 },
   sqDesc: { fontSize: 14.5, lineHeight: 1.8, color: 'rgba(220,232,250,0.85)', marginBottom: 28 },
   sqBadges: { display: 'flex', gap: 14, flexWrap: 'wrap' },
   sqBadge: { display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(212,146,10,0.15)', border: '1px solid rgba(212,146,10,0.4)', padding: '10px 18px', fontSize: 14, color: 'var(--gold-2)', fontWeight: 700 },
 
-  pillarGrid: { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: '#e0e4eb', border: '1px solid #e0e4eb' },
-  pillarCard: { background: '#fff', padding: '32px 28px', display: 'flex', flexDirection: 'column', gap: 18 },
-  pillarHeader: { display: 'flex', alignItems: 'flex-start', gap: 16, paddingBottom: 18, borderBottom: '1px solid #eef0f5' },
-  pillarNum: { fontSize: 32, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, color: 'var(--gold-2)', letterSpacing: 1, lineHeight: 1, flexShrink: 0 },
+  pillarGrid: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: '#e0e4eb', border: '1px solid #e0e4eb' },
+  pillarCard: { background: '#fff', padding: '22px 18px', display: 'flex', flexDirection: 'column', gap: 14 },
+  pillarHeader: { display: 'flex', alignItems: 'flex-start', gap: 12, paddingBottom: 14, borderBottom: '1px solid #eef0f5' },
+  pillarNum: { fontSize: 26, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, color: 'var(--gold-2)', letterSpacing: 1, lineHeight: 1, flexShrink: 0 },
   pillarTitles: { flex: 1 },
-  pillarTitle: { fontSize: 18, fontWeight: 800, color: '#0d2045', marginBottom: 4, letterSpacing: -0.3 },
-  pillarSub: { fontSize: 11, letterSpacing: 2, color: '#8a9ab8', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 },
-  pillarList: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 },
-  pillarItem: { display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: '#333', lineHeight: 1.6 },
-  pillarTick: { width: 6, height: 6, background: 'var(--gold-2)', marginTop: 8, flexShrink: 0 },
+  pillarTitle: { fontSize: 16, fontWeight: 800, color: '#0d2045', marginBottom: 3, letterSpacing: -0.3 },
+  pillarSub: { fontSize: 10, letterSpacing: 1.5, color: '#8a9ab8', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 },
+  pillarList: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 9 },
+  pillarItem: { display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: '#333', lineHeight: 1.55 },
+  pillarTick: { width: 5, height: 5, background: 'var(--gold-2)', marginTop: 7, flexShrink: 0 },
 
   flow: { display: 'flex', alignItems: 'stretch', justifyContent: 'center', flexWrap: 'wrap' },
   flowStep: { flex: '1 1 140px', minWidth: 130, maxWidth: 200, padding: '28px 18px', background: '#f4f6fa', border: '1px solid #e0e4eb', textAlign: 'center' },
@@ -1030,21 +1066,26 @@ function ContactPage({ t }) {
         </form>
 
         {/* Contact Info */}
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           {[
             ['주소', d.info.addr],
             ['전화', d.info.tel],
             ['팩스', d.info.fax],
             ['이메일', d.info.email],
-            ['운영시간', d.info.hours],
           ].map(([label, val], i) => (
             <div key={i} style={{ padding: '20px 0', borderBottom: '1px solid #e8edf5' }}>
               <div style={{ fontSize: 11, letterSpacing: 2, color: '#d4920a', fontWeight: 700, marginBottom: 6 }}>{label.toUpperCase()}</div>
               <div style={{ fontSize: 14, color: '#333', lineHeight: 1.7 }}>{val}</div>
             </div>
           ))}
-          <div style={{ marginTop: 28 }}>
-            <PlaceholderImg label="약도 이미지" height={200} style={{ borderRadius: 2 }} />
+          <div style={{ marginTop: 24, flex: 1, minHeight: 220, display: 'flex' }}>
+            <iframe
+              title="아이앤테크 위치"
+              src="https://maps.google.com/maps?q=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%EC%B2%A8%EB%8B%A8%EC%97%B0%EC%8B%A0%EB%A1%9C%20398%EB%B2%88%EA%B8%B8%2023&z=16&hl=ko&output=embed"
+              style={{ width: '100%', height: '100%', minHeight: 220, border: '1px solid #e8edf5', display: 'block' }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </div>
