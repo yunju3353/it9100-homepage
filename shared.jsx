@@ -74,12 +74,11 @@ function Nav({ t, lang, setLang, navigate, currentPage }) {
   return (
     <nav style={{ ...navSt.nav, background: navBg, borderBottom: navBorder }}>
       <div style={navSt.logo} onClick={() => { navigate('home'); setMobileOpen(false); }}>
-        <div style={navSt.logoMark}>
-          <img src="assets/logo-white.png" alt="I&TECH" style={navSt.logoImg} />
-          <span style={navSt.logoBar} />
-          <span style={navSt.logoSince}>EST. 1992</span>
-        </div>
-        <span style={navSt.logoSub}>아이앤테크 · I&amp;TECH CO., LTD.</span>
+        <img src="assets/logo-final-white.png" alt="I&TECH 아이앤테크 · 자동차 사출금형·사출 전문" style={navSt.logoImg} />
+        <span style={navSt.logoBar} />
+        <span style={navSt.logoCo}>아이앤테크(주)</span>
+        <span style={navSt.logoBar} />
+        <span style={navSt.logoSince}>EST. 1992</span>
       </div>
 
       <div style={navSt.menuWrap} data-desktop-menu="true">
@@ -152,12 +151,13 @@ function Nav({ t, lang, setLang, navigate, currentPage }) {
 
 const navSt = {
   nav: { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000, transition: 'background 0.4s, border 0.4s', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px', height: 78, backdropFilter: 'blur(8px)' },
-  logo: { cursor: 'pointer', display: 'flex', flexDirection: 'column', lineHeight: 1.05, flexShrink: 0, gap: 6 },
+  logo: { cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 },
   logoMark: { display: 'flex', alignItems: 'center', gap: 12 },
-  logoImg: { height: 32, width: 'auto', display: 'block' },
+  logoImg: { height: 58, width: 'auto', display: 'block' },
+  logoCo: { fontSize: 13, color: 'var(--gold-2)', letterSpacing: 1, fontWeight: 700 },
   logoMain: { fontSize: 24, fontWeight: 900, color: '#fff', letterSpacing: 3, fontFamily: 'Barlow Condensed, sans-serif' },
-  logoBar: { width: 1, height: 14, background: 'rgba(212,146,10,0.6)' },
-  logoSince: { fontSize: 10, color: 'var(--gold-2)', letterSpacing: 3, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 },
+  logoBar: { width: 1, height: 18, background: 'rgba(212,146,10,0.55)' },
+  logoSince: { fontSize: 11, color: 'var(--gold-2)', letterSpacing: 2, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 },
   logoSub: { fontSize: 9.5, color: 'rgba(170,196,232,0.7)', letterSpacing: 2 },
   menuWrap: { display: 'flex', alignItems: 'center', gap: 0, flex: 1, justifyContent: 'flex-end' },
   menuItem: { position: 'relative' },
@@ -182,12 +182,9 @@ function Footer({ t, navigate }) {
       <div style={ftSt.top}>
         <div style={ftSt.inner}>
           <div style={ftSt.brand}>
-            <div style={ftSt.logoBlock}>
-              <div style={ftSt.logoMain}>I&amp;TECH</div>
-              <div style={ftSt.logoSince}>SINCE 1992</div>
-            </div>
-            <div style={ftSt.logoSub}>{t.footer.company}</div>
+            <img src="assets/logo-final-white.png" alt="I&TECH 아이앤테크" style={{ height: 78, width: 'auto', display: 'block' }} />
             <div style={{ width: 36, height: 2, background: 'var(--gold-2)', margin: '20px 0' }} />
+            <p style={ftSt.info}>{t.footer.org}</p>
             <p style={ftSt.info}>{t.footer.biz}</p>
             <p style={ftSt.info}>{t.footer.addr}</p>
             <p style={ftSt.info}>{t.footer.tel} &nbsp;|&nbsp; {t.footer.fax}</p>

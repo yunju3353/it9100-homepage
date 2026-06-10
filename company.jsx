@@ -261,10 +261,16 @@ function LocationPage({ t }) {
   const d = t.location;
   return (
     <PageWrapper title={d.title} subtitle="Location" kicker="VISIT US">
-      {/* Map */}
+      {/* Map — Google Maps embed */}
       <div style={{ marginBottom: 56, position: 'relative' }}>
-        <PlaceholderImg label="지도 이미지 (Google Maps / 카카오맵 연동 예정)" height={460} dark />
-        <div style={{ position: 'absolute', top: 24, left: 24, background: 'rgba(7,20,46,0.96)', color: '#fff', padding: '22px 24px 20px', maxWidth: 320, borderTop: '3px solid var(--gold-2)' }}>
+        <iframe
+          title="아이앤테크 위치"
+          src="https://maps.google.com/maps?q=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%EC%B2%A8%EB%8B%A8%EC%97%B0%EC%8B%A0%EB%A1%9C%20398%EB%B2%88%EA%B8%B8%2023&z=16&hl=ko&output=embed"
+          style={{ width: '100%', height: 460, border: 0, display: 'block' }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <div style={{ position: 'absolute', top: 24, left: 24, background: 'rgba(7,20,46,0.96)', color: '#fff', padding: '22px 24px 20px', maxWidth: 320, borderTop: '3px solid var(--gold-2)', pointerEvents: 'none' }}>
           <div style={{ fontSize: 11, letterSpacing: 4, color: 'var(--gold-2)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, marginBottom: 10, lineHeight: 1, whiteSpace: 'nowrap' }}>I&amp;TECH HEADQUARTERS</div>
           <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 8, lineHeight: 1.3 }}>아이앤테크 본사 · 공장</div>
           <div style={{ fontSize: 13, color: 'rgba(170,196,232,0.85)', lineHeight: 1.7 }}>{d.addr}</div>
@@ -276,24 +282,11 @@ function LocationPage({ t }) {
         {[
           ['ADDRESS', '주소', d.addr],
           ['CONTACT', '연락처', `TEL ${d.tel}\nFAX ${d.fax}\n${d.email}`],
-          ['HOURS', '운영 시간', '평일 09:00 — 18:00\n주말 / 공휴일 휴무'],
         ].map(([eng, ko, val], i) => (
           <div key={i} style={{ background: '#fff', padding: '32px 28px' }}>
             <div style={{ fontSize: 11, letterSpacing: 4, color: 'var(--gold)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, marginBottom: 6 }}>{eng}</div>
             <div style={{ fontSize: 13, color: '#8a9ab8', marginBottom: 16, letterSpacing: 1 }}>{ko}</div>
             <div style={{ fontSize: 15, color: 'var(--navy-800)', lineHeight: 1.85, fontWeight: 500, whiteSpace: 'pre-line' }}>{val}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Directions */}
-      <SectionTitle label="How to Get Here" title="찾아오시는 길" />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
-        {d.directions.map((dir, i) => (
-          <div key={i} style={{ background: 'var(--paper)', padding: '32px 28px', borderTop: '3px solid var(--navy-800)', position: 'relative' }}>
-            <div style={{ fontSize: 38, fontWeight: 900, fontFamily: 'Barlow Condensed, sans-serif', color: 'var(--gold-2)', lineHeight: 1, marginBottom: 14, letterSpacing: -1 }}>0{i + 1}</div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--navy-800)', marginBottom: 10 }}>{dir.how}</div>
-            <div style={{ fontSize: 14.5, color: '#5a6577', lineHeight: 1.85 }}>{dir.desc}</div>
           </div>
         ))}
       </div>

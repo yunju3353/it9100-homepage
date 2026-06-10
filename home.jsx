@@ -153,7 +153,7 @@ function HomePage({ t, navigate }) {
                     <span style={hmSt.bizCardEng}>{eng}</span>
                   </div>
                   <div style={hmSt.bizCardImg}>
-                    <PlaceholderImg label={['금형 가공 모습', '사출 성형 라인', '완제품 부품'][i]} height={220} />
+                    <img src={['assets/home-svc-mold.jpg', 'assets/home-svc-injection.jpg', 'assets/home-svc-parts.jpg'][i]} alt={['사출금형 제작', '사출 양산', '대형 부품 생산'][i]} style={{ width: '100%', height: 220, objectFit: 'cover', display: 'block' }} />
                   </div>
                   <div style={hmSt.bizCardBody}>
                     <h3 style={hmSt.bizCardTitle}>{item.title}</h3>
@@ -228,12 +228,14 @@ function HomePage({ t, navigate }) {
             </div>
             <div style={hmSt.certRail}>
               {[
-                ['SQ Mark', '현대·기아 최상위 등급'],
+                ['SQ Mark · 사출', '현대·기아 최상위 등급'],
+                ['SQ Mark · 사출금형', '현대·기아 최상위 등급'],
                 ['ISO 9001', '품질경영시스템'],
-                ['IATF 16949', '자동차 품질규격'],
+                ['ISO 14001', '환경경영시스템'],
                 ['INNO-BIZ', '기술혁신형 중소기업'],
                 ['벤처기업', '기술 보유 인증'],
                 ['뿌리기술', '소부장 기업'],
+                ['가족친화기업', '여성가족부 인증'],
               ].map(([name, sub], i) => (
                 <div key={i} style={hmSt.certBadge}>
                   <div style={hmSt.certName}>{name}</div>
@@ -281,7 +283,7 @@ const hmSt = {
   heroSlideLabel: { display: 'flex', alignItems: 'center', gap: 18, marginBottom: 28 },
   heroSlideNum: { fontSize: 13, letterSpacing: 3, color: 'var(--gold-2)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700 },
   heroSlideTopic: { fontSize: 11, letterSpacing: 4, color: 'rgba(255,255,255,0.55)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600, paddingLeft: 18, borderLeft: '1px solid rgba(255,255,255,0.2)' },
-  heroTitle: { fontSize: 'clamp(34px, 4.8vw, 64px)', fontWeight: 600, lineHeight: 1.25, margin: '0 0 24px', letterSpacing: -1.5, whiteSpace: 'pre-line', textShadow: '0 2px 30px rgba(0,0,0,0.35)' },
+  heroTitle: { fontSize: 'clamp(26px, 3.6vw, 48px)', fontWeight: 600, lineHeight: 1.28, margin: '0 0 22px', letterSpacing: -1.2, whiteSpace: 'pre-line', textShadow: '0 2px 30px rgba(0,0,0,0.35)' },
   heroSub: { fontSize: 'clamp(15px, 1.4vw, 19px)', color: 'rgba(220,232,250,0.78)', marginBottom: 44, lineHeight: 1.7, maxWidth: 600, whiteSpace: 'pre-line' },
   heroBtns: { display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' },
   heroBtnPrimary: { background: 'var(--gold-2)', color: 'var(--navy-900)', border: 'none', padding: '17px 32px', fontSize: 14, fontWeight: 800, cursor: 'pointer', letterSpacing: 2, display: 'inline-flex', alignItems: 'center', gap: 14, transition: 'all 0.2s', textTransform: 'uppercase' },
