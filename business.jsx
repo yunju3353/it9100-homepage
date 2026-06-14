@@ -524,9 +524,9 @@ function InjectionFacilityPage({ t }) {
               <thead>
                 <tr style={{ background: 'var(--navy-50)' }}>
                   {cols.map((c, i) => (
-                    <th key={i} style={{ padding: '9px 12px', textAlign: 'center', borderBottom: '2px solid var(--navy-800)' }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1.5, color: 'var(--gold)', fontFamily: 'Barlow Condensed, sans-serif' }}>{c.head}</div>
-                      {c.sub && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: -0.2, color: 'var(--navy-800)', marginTop: 1 }}>{c.sub}</div>}
+                    <th key={i} style={{ padding: '12px 14px', textAlign: 'center', borderBottom: '2px solid var(--navy-800)' }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: 'var(--gold)', fontFamily: 'Barlow Condensed, sans-serif' }}>{c.head}</div>
+                      {c.sub && <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: -0.2, color: 'var(--navy-800)', marginTop: 2 }}>{c.sub}</div>}
                     </th>
                   ))}
                 </tr>
@@ -535,18 +535,18 @@ function InjectionFacilityPage({ t }) {
                 {rows.map((r, i) => {
                   const isLast = i === rows.length - 1;
                   const base = {
-                    padding: '6px 12px',
+                    padding: '9px 14px',
                     textAlign: 'center',
                     color: 'var(--navy-800)',
-                    fontSize: 14,
+                    fontSize: 17,
                     fontWeight: 400,
                     borderBottom: isLast ? 'none' : '1px solid #eceae3',
                   };
                   return (
                     <tr key={i} style={{ background: i % 2 === 1 ? '#fbfaf7' : 'transparent' }}>
-                      <td style={{ ...base, color: 'var(--steel)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 }}>{i + 1}</td>
-                      <td style={{ ...base, fontWeight: 800, fontSize: 15 }}>{r.ton.toLocaleString()}T</td>
-                      <td style={{ ...base, color: 'var(--gold)', fontWeight: 700 }}>1</td>
+                      <td style={{ ...base, fontSize: 15, color: 'var(--steel)', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600 }}>{i + 1}</td>
+                      <td style={{ ...base, fontWeight: 800, fontSize: 19 }}>{r.ton.toLocaleString()}T</td>
+                      <td style={{ ...base, fontSize: 16, color: 'var(--gold)', fontWeight: 700 }}>1</td>
                     </tr>
                   );
                 })}
@@ -703,9 +703,9 @@ function FacilityPage({ t, dataKey }) {
 }
 
 const facSt = {
-  table: { width: '100%', borderCollapse: 'collapse', fontSize: 14, border: '1px solid var(--line)' },
-  th: { padding: '13px 18px', textAlign: 'center', fontSize: 13, fontWeight: 700, letterSpacing: 1, whiteSpace: 'nowrap', background: 'var(--navy-900)', color: '#fff' },
-  td: { padding: '12px 18px', borderBottom: '1px solid #e8edf5', borderLeft: '1px solid #eef1f6', color: '#333', verticalAlign: 'middle' },
+  table: { width: '100%', borderCollapse: 'collapse', fontSize: 16, border: '1px solid var(--line)' },
+  th: { padding: '14px 18px', textAlign: 'center', fontSize: 15, fontWeight: 700, letterSpacing: 1, whiteSpace: 'nowrap', background: 'var(--navy-900)', color: '#fff' },
+  td: { padding: '13px 18px', fontSize: 16, borderBottom: '1px solid #e8edf5', borderLeft: '1px solid #eef1f6', color: '#333', verticalAlign: 'middle' },
 };
 
 // ── Factory Gallery Page ───────────────────────────────────────────────────────
@@ -744,6 +744,28 @@ function FactoryPage({ t }) {
           return (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 22 }}>
               {videos.map((v, i) => {
+                // ── Local video file: inline player (optionally starting at v.start sec) ──
+                if (v.video) {
+                  return (
+                    <div key={i} style={{ display: 'block' }}>
+                      <div style={{ position: 'relative', aspectRatio: '16 / 9', overflow: 'hidden', background: 'var(--navy-900)', border: '1px solid var(--line)' }}>
+                        <video
+                          src={v.start ? `${v.video}#t=${v.start}` : v.video}
+                          poster={v.thumb || undefined}
+                          controls
+                          playsInline
+                          preload="metadata"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', background: '#000' }}
+                          onLoadedMetadata={(e) => { if (v.start) { try { e.currentTarget.currentTime = v.start; } catch (_) {} } }}
+                        />
+                      </div>
+                      {v.title && (
+                        <div style={{ padding: '14px 4px 0', fontSize: 15, fontWeight: 700, color: 'var(--navy-800)', letterSpacing: -0.2 }}>{v.title}</div>
+                      )}
+                    </div>
+                  );
+                }
+                // ── YouTube: thumbnail card linking out ──
                 // accept full URL or bare YouTube ID
                 const id = (v.youtube || '').replace(/^.*(?:youtu\.be\/|v=|embed\/)/, '').split(/[?&]/)[0];
                 const thumb = v.thumb || (id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null);

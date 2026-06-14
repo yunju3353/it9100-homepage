@@ -111,6 +111,9 @@ function Nav({ t, lang, setLang, navigate, currentPage }) {
           <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12 }}>/</span>
           <button style={{ ...navSt.langBtn, color: lang === 'en' ? 'var(--gold-2)' : '#aaa', fontWeight: lang === 'en' ? 700 : 400 }}
             onClick={() => setLang('en')}>ENG</button>
+          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12 }}>/</span>
+          <button style={{ ...navSt.langBtn, color: lang === 'ja' ? 'var(--gold-2)' : '#aaa', fontWeight: lang === 'ja' ? 700 : 400 }}
+            onClick={() => setLang('ja')}>JPN</button>
         </div>
       </div>
 
@@ -125,6 +128,7 @@ function Nav({ t, lang, setLang, navigate, currentPage }) {
           <div style={{ padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'center', gap: 16 }}>
             <button style={{ ...navSt.langBtn, color: lang === 'ko' ? 'var(--gold-2)' : '#aaa' }} onClick={() => setLang('ko')}>KOR</button>
             <button style={{ ...navSt.langBtn, color: lang === 'en' ? 'var(--gold-2)' : '#aaa' }} onClick={() => setLang('en')}>ENG</button>
+            <button style={{ ...navSt.langBtn, color: lang === 'ja' ? 'var(--gold-2)' : '#aaa' }} onClick={() => setLang('ja')}>JPN</button>
           </div>
           {menus.map(menu => (
             <div key={menu.key}>

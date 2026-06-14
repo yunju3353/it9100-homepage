@@ -29,7 +29,7 @@ function App() {
 
   useEffectA(() => {
     localStorage.setItem('iantech_lang', lang);
-    document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
+    document.documentElement.lang = lang === 'ko' ? 'ko' : (lang === 'ja' ? 'ja' : 'en');
   }, [lang]);
 
   function navigate(target) {
